@@ -1,15 +1,20 @@
-function getElementWidth(content, padding, border) {
-  // Конвертуємо значення параметрів у числа
-  const contentWidth = parseFloat(content);
-  const paddingWidth = parseFloat(padding);
-  const borderWidth = parseFloat(border);
+function filterArray(numbers, value) {
+  // Створи порожній масив, у який будеш додавати підходящі числа.
+  const filteredNumbers = [];
 
-  // Розраховуємо загальну ширину елемента
-  const totalWidth = contentWidth + (paddingWidth * 2) + (borderWidth * 2);
+  // Ітерація кожного елемента масиву numbers.
+  for (const number of numbers) {
+    // Перевірка кожного елемента і додавання до свого масиву.
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  }
 
-  // Повертаємо результат
-  return totalWidth;
+  // Повернення свого нового масиву з підходящими числами як результат.
+  return filteredNumbers;
 }
-console.log(getElementWidth("50px", "8px", "4px")); // 74
-console.log(getElementWidth("60px", "12px", "8.5px")); // 101
-console.log(getElementWidth("200px", "0px", "0px")); // 200
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
